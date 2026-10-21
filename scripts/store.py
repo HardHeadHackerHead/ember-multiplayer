@@ -247,6 +247,17 @@ def package(cfg, readme):
             z.write(cfg["root"] / f, folder + Path(f).name)
 
 
+def native_ack(cfg):
+    """Hexium holds packages with native DLLs (steam_api64.dll: Valve's, no PDB) for a moderator unless the upload acknowledges they
+    have no PDB. The submit field isn't documented: these are the names tried (unknown fields are ignored)."""
+    native = [f"plugins/{cfg['plugin_folder']}/" + Path(f).name for f in cfg["files"] if Path(f).name.lower() == "steam_api64.dll"]
+    if not native:
+        return {}
+    return {"acknowledge_missing_pdbs": True, "acknowledge_missing_pdb": True, "missing_pdb_acknowledged": True,
+            "pdb_acknowledgement": True, "pdb_acknowledged": True, "acknowledged_missing_pdbs": native,
+            "acknowledged_native_binaries": native, "native_binaries_acknowledged": True}
+
+
 def upload(cfg, token):
     data = cfg["zip"].read_bytes()
     community = cfg["hexium"]["community"]
@@ -268,7 +279,8 @@ def upload(cfg, token):
             fail(f"finish-upload: {s} {r}")
         s, r, _ = call("POST", f"{SITE}/api/experimental/submission/submit/", token, {
             "upload_uuid": uuid, "author_name": cfg["team"], "communities": [community], "has_nsfw_content": False,
-            "categories": [], "community_categories": {community: cfg["hexium"]["categories"]}})
+            "categories": [], "community_categories": {community: cfg["hexium"]["categories"]},
+            **native_ack(cfg)})
         if s in (200, 201):
             return r
         if "too many" not in json.dumps(r):  # Hexium's limit: 10 uploads per 10 minutes per team (a refused upload is used up)
