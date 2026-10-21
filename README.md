@@ -184,7 +184,7 @@ Your saves stay yours, trades survive a crash, and dropped connections reconnect
 ## Install
 
 **The easy way:** a mod manager such as **Gale** or **r2modman**: find *Ember Multiplayer* in the Emberville
-community ([Hexium](https://emberville.hexium.gg/mods/Quads_Lab/Ember_Multiplayer)) and install it. It brings BepInEx with it, and every player installs
+community ([Hexium](https://emberville.hexium.gg/mods/Quads_Lab/Ember_Multiplayer)) and install it, together with **BepInExPack** from the same site if your manager doesn't add it. Every player installs
 the same version.
 
 **By hand:**

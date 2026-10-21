@@ -3,7 +3,7 @@
   "name": "Ember_Multiplayer",
   "description": "Online co-op multiplayer for up to 4 players: join a friend's world with your own character over Steam (invites, lobbies) or LAN. Shared story, quests, enemies, bosses, chests and loot, voice chat, party HUD, pings, teleport to teammates.",
   "website": "https://github.com/HardHeadHackerHead/ember-multiplayer",
-  "dependencies": ["BepInEx-BepInExPack-5.4.2305"],
+  "dependencies": [],
   "files": [
     "src/EmbervilleMP/bin/Release/netstandard2.1/EmbervilleMP.dll",
     "src/EmbervilleMP/bin/Release/netstandard2.1/LiteNetLib.dll",
@@ -12,7 +12,9 @@
   ],
   "hexium": {
     "community": "emberville",
-    "categories": ["Client-only"],
+    "categories": [
+      "Client-only"
+    ],
     "install_location": "client"
   }
 }
