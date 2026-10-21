@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>EmbervilleMP</AssemblyName>
+    <RootNamespace>EmbervilleMP</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <GameDir Condition="'$(GameDir)' == ''">D:\SteamLibrary\steamapps\common\Emberville Demo</GameDir>
+    <Managed>$(GameDir)\Emberville_Data\Managed</Managed>
+    <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
+    <PluginOut>$(BepInExDir)\plugins\EmbervilleMP</PluginOut>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>AI_Assisted_Creation</_Parameter1>
+      <_Parameter2>This assembly was partially or fully created with the assistance of Generative AI.</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiteNetLib" Version="2.1.4" />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(BepInExDir)\core\BepInEx.dll" Private="false" />
+    <Reference Include="$(BepInExDir)\core\0Harmony.dll" Private="false" />
+    <Reference Include="$(Managed)\Assembly-CSharp.dll" Private="false" Publicize="true" />
+    <Reference Include="$(Managed)\UnityEngine.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.AnimationModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.Physics2DModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.AudioModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.ImageConversionModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.ScreenCaptureModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.2D.Animation.Runtime.dll" Private="false" />
+    <Reference Include="$(Managed)\UniTask.dll" Private="false" />
+    <Reference Include="$(Managed)\R3.dll" Private="false" />
+    <Reference Include="$(Managed)\R3.Unity.dll" Private="false" />
+    <Reference Include="$(Managed)\ObservableCollections.dll" Private="false" />
+    <Reference Include="$(Managed)\AK.Wwise.Unity.API.dll" Private="false" />
+    <Reference Include="$(Managed)\AK.Wwise.Unity.API.WwiseTypes.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.ParticleSystemModule.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.Behavior.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.Addressables.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.ResourceManager.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.Localization.dll" Private="false" />
+    <Reference Include="$(Managed)\SerializableGUID.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.JSONSerializeModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.TilemapModule.dll" Private="false" />
+    <Reference Include="$(Managed)\UnityEngine.GridModule.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.RenderPipelines.Universal.2D.Runtime.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.RenderPipelines.Universal.Runtime.dll" Private="false" />
+    <Reference Include="$(Managed)\Unity.RenderPipelines.Core.Runtime.dll" Private="false" />
+    <Reference Include="..\..\downloads\steamworks\Windows-x64\Steamworks.NET.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="Deploy" AfterTargets="Build" Condition="'$(NoDeploy)' != 'true'">
+    <MakeDir Directories="$(PluginOut)" />
+    <Copy SourceFiles="$(TargetPath);$(OutDir)LiteNetLib.dll;..\..\downloads\steamworks\Windows-x64\Steamworks.NET.dll;..\..\downloads\steamworks\Windows-x64\steam_api64.dll" DestinationFolder="$(PluginOut)" />
+  </Target>
+</Project>

@@ -1,0 +1,18 @@
+{
+  "team": "Quads_Lab",
+  "name": "Ember_Multiplayer",
+  "description": "Online co-op multiplayer for up to 4 players: join a friend's world with your own character over Steam (invites, lobbies) or LAN. Shared story, quests, enemies, bosses, chests and loot, voice chat, party HUD, pings, teleport to teammates.",
+  "website": "https://github.com/HardHeadHackerHead/ember-multiplayer",
+  "dependencies": ["BepInEx-BepInExPack-5.4.2305"],
+  "files": [
+    "src/EmbervilleMP/bin/Release/netstandard2.1/EmbervilleMP.dll",
+    "src/EmbervilleMP/bin/Release/netstandard2.1/LiteNetLib.dll",
+    "downloads/steamworks/Windows-x64/Steamworks.NET.dll",
+    "downloads/steamworks/Windows-x64/steam_api64.dll"
+  ],
+  "hexium": {
+    "community": "emberville",
+    "categories": ["Client-only"],
+    "install_location": "client"
+  }
+}

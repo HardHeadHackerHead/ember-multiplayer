@@ -1,0 +1,60 @@
+name: Bug report
+description: Something in Ember Multiplayer doesn't work as it should
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Ember Multiplayer version
+      description: It's in the top right of the main menu, or in your mod manager.
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      placeholder: My friend opened a chest and I still saw it closed.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen again
+      placeholder: |
+        1. Host a game, a friend joins
+        2. ...
+  - type: dropdown
+    id: role
+    attributes:
+      label: You were
+      options:
+        - The host
+        - A guest (joined someone's game)
+  - type: dropdown
+    id: players
+    attributes:
+      label: Players in the game
+      options:
+        - "2"
+        - "3"
+        - "4"
+  - type: dropdown
+    id: connection
+    attributes:
+      label: How you connected
+      options:
+        - Steam (invite, friends list or public game)
+        - LAN
+        - Direct IP
+  - type: textarea
+    id: mods
+    attributes:
+      label: Your other mods
+      description: Your mod manager can copy the list, or name the big ones.
+  - type: textarea
+    id: log
+    attributes:
+      label: The log
+      description: Attach BepInEx/LogOutput.log from the game folder (or your mod manager's profile folder), from everyone in the game if you can, or paste the red lines.
+      render: text

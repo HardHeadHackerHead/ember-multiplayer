@@ -1,0 +1,23 @@
+# build output and test runs
+build/
+src/**/bin/
+src/**/obj/
+mods/**/bin/
+mods/**/obj/
+*.user
+__pycache__/
+# big or machine-local downloads (the Windows Steamworks and BepInEx bits are tracked: the build needs them)
+downloads/steamworks/OSX-Linux-x64/
+downloads/steamworks/Windows-x86/
+downloads/*.unitypackage
+
+# the game's decompiled code: local reference only, never published (regenerate with ILSpy from Assembly-CSharp.dll)
+notes/decompiled/
+# ea-check tool build output
+tools/**/bin/
+tools/**/obj/
+
+# local AI/project tooling (QuadFlow, Claude Code): kept on disk, never published
+.claude/
+.quadflow/
+CLAUDE.md

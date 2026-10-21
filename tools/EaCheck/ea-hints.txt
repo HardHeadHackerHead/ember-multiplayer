@@ -1,0 +1,34 @@
+# Game members our code reaches by name on objects whose type the IL doesn't show (Traverse, obj.GetType()...).
+# ea-check reports every such dynamic lookup; the ones listed here are checked against the build.
+# kind (field|property|method|type) | type full name (Cecil: nested as Outer/Inner) | member | param types (full names, comma-separated; "()" = none; empty = any) | our file[:line] | note
+
+field  | RepairableBuilding | transitionSfx |                    | Sync/Objects/RepairSync.cs:104 | repair sound (RepairFx.Play, Traverse)
+field  | RepairableBuilding | transitionVfx |                    | Sync/Objects/RepairSync.cs:106 | repair particles (RepairFx.Play, Traverse)
+field  | DestructedPortal   | transitionSfx |                    | Sync/Objects/RepairSync.cs:104 | portal repair sound (RepairFx.Play, Traverse)
+field  | DestructedPortal   | transitionVfx |                    | Sync/Objects/RepairSync.cs:106 | portal repair particles (RepairFx.Play, Traverse)
+method | AK.Wwise.Event     | Post          | UnityEngine.GameObject | Sync/Objects/RepairSync.cs:105 | plays transitionSfx (reflection)
+method | UnityEngine.ParticleSystem | Play  | ()                 | Sync/Objects/RepairSync.cs:107 | plays transitionVfx (reflection)
+field  | CartographerUnlockButton/<>c__DisplayClass15_0 | cartographerUnlock | | Sync/CartographerSync.cs:106 | the unlock button's click closure (found by its Unit parameter)
+field  | CartographerUnlockButton/<>c__DisplayClass15_0 | inventory          | | Sync/CartographerSync.cs:107 | the buyer's gold
+field  | CartographerUnlockButton/<>c__DisplayClass15_0 | unlockedPortals    | | Sync/CartographerSync.cs:108 | the portal requirement
+field  | TimedTrigger/<Trigger>d__9 | <>4__this |                  | Sync/Objects/ScriptSync.cs:371 | the async Trigger's state machine (its events are wrapped by a transpiler)
+property | CraftingRecipe | RecipeName |                     | Sync/WorldNotices.cs:39 | the recipe's name in the "learned" notification (reflection: LocalizedString)
+field  | MatriarchBossCinematic | boss |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | MatriarchBossCinematic | door |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | MatriarchBossCinematic | gameArea |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | MatriarchBossCinematic | toTeleportPlayer |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | MatriarchBossCinematic | fightConfiner |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | MatriarchBossCinematic | hasBeenDone |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+method | MatriarchBossCinematic | HandleEvent | System.String | Sync/BossArena.cs:102 | boss events (patched per arena type)
+method | MatriarchBossCinematic | ResetToLastState | () | Sync/BossArena.cs:103 | the rewind of its fight (patched per arena type)
+field  | HeartwoodBossCinematic | boss |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | HeartwoodBossCinematic | door |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | HeartwoodBossCinematic | gameArea |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | HeartwoodBossCinematic | toTeleportPlayer |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | HeartwoodBossCinematic | fightConfiner |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+field  | HeartwoodBossCinematic | hasBeenDone |                    | Sync/BossArena.cs:114 | boss arena shape (found by reflection)
+method | HeartwoodBossCinematic | HandleEvent | System.String | Sync/BossArena.cs:102 | boss events (patched per arena type)
+method | HeartwoodBossCinematic | ResetToLastState | () | Sync/BossArena.cs:103 | the rewind of its fight (patched per arena type)
+field  | MatriarchBossCinematic | bossBattleMusicPlayer |              | Sync/BossArena.cs:114 | a late player joining her fight: the music (reflection)
+field  | HeartwoodBossCinematic | bossBattleMusicPlayer |              | Sync/BossArena.cs:114 | the same
+field  | MatriarchBossCinematic | nestDoor |                   | Sync/BossArena.cs:114 | what her intro switches on at its end (joining her fight)
